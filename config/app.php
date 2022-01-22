@@ -15,6 +15,9 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'silver_discount' => env('SILVER_DISCOUNT', 0.1),
+    'gold_discount' => env('GOLD_DISCOUNT', 0.15),
+    'platinum_discount' => env('PLATINUM_DISCOUNT', 0.20),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
