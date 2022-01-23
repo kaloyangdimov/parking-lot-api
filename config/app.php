@@ -15,6 +15,7 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'max_parking_spots' => env('MAX_PARKING_SPOTS', 200),
     'silver_discount' => env('SILVER_DISCOUNT', 0.1),
     'gold_discount' => env('GOLD_DISCOUNT', 0.15),
     'platinum_discount' => env('PLATINUM_DISCOUNT', 0.20),

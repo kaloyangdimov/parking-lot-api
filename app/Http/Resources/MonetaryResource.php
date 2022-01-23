@@ -14,6 +14,9 @@ class MonetaryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return ['amount' => number_format($this->resource, 2)];
+        return [
+            'amount' => number_format($this->resource, 2),
+            'moment' => now()->format('Y-m-d H:i:s')
+        ];
     }
 }

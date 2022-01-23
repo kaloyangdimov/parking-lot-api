@@ -20,7 +20,7 @@ class OccupancyService extends Controller
             $occupiedCount += $sizes[$singleVehicle->vehicle_type];
         }
 
-        $availableSpots = env('MAX_PARKING_SPOTS', 200) - $occupiedCount;
+        $availableSpots = config('app.max_parking_spots') - $occupiedCount;
 
         return [
             'total_free_parking_spots' => $this->getSpotsBySize($availableSpots, VehicleRate::SIZE_A),

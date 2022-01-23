@@ -7,6 +7,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Occupancy;
 use App\Models\IssuedCard;
+use Illuminate\Support\Facades\Config;
 
 class OccupancyTest extends TestCase
 {
@@ -178,6 +179,17 @@ class OccupancyTest extends TestCase
                     'The selected vehicle reg number is invalid.'
                 ]
             ]
+        ]);
+    }
+
+    public function test_parking_lot_full_failure()
+    {
+        Config::set('app.max_parking_spots', 3); // set max spots to 3
+        $response = $this->postJson($this->enterVehicleRoute, ['vehicle_reg_number' => '23123123', 'vehicle_type' => 3]); // veh type 3 requires 4 spots
+
+        $response->assertStatus(403)->assertJson([
+            'message' => 'No vacancy available',
+
         ]);
     }
 }
